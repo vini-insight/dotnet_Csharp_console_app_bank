@@ -7,12 +7,12 @@ using System.Linq;
 
 namespace dotnet_Csharp_console_app_bank
 {
-    class Program
-    {
-        static List<Account> listAccounts = new List<Account>();
+	class Program
+	{
+		static List<Account> listAccounts = new List<Account>();
 		static void Main(string[] args)
 		{
-			string userChoice = GetUserChoice();					
+			string userChoice = GetUserChoice();
 			do
 			{
 				switch (userChoice)
@@ -40,8 +40,7 @@ namespace dotnet_Csharp_console_app_bank
 						break;
 					case "X":
 						continue;
-					default:
-						// Console.WriteLine("You typed \t\t\"{0}\"\n", userChoice);
+					default:						
 						Console.WriteLine("You typed \"{0}\"\n", userChoice);
 						Console.WriteLine("invalid option. choose one of the alternatives below:".ToUpper());
 						Console.WriteLine("\t\t\t1\n\t\t\t2\n\t\t\t3\n\t\t\t4\n\t\t\t5\n\t\t\tD\t\t\t\n\t\t\tC\n\n\t\t\tOR\n\n\t\t\tX\n");

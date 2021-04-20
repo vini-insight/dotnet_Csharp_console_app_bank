@@ -5,13 +5,10 @@ namespace Models
 {
 	public class Account
 	{
-		// Atributos
 		private AccountType AccountType { get; set; }
 		public double Fund { get; private set; }
 		private double Credit { get; set; }
-		public string Name { get; private set; }
-
-		// Métodos
+		public string Name { get; private set; }		
 		public Account(AccountType AccountType, double fund, double credit, string name)
 		{
 			this.AccountType = AccountType;
@@ -22,7 +19,6 @@ namespace Models
 
 		public bool Withdraw(double amount)
 		{
-            // Sufficient funds validation
             if(this.Fund - amount < (this.Credit *-1))
 			{
                 Console.WriteLine("Insufficient Funds!");
