@@ -91,7 +91,7 @@ namespace dotnet_Csharp_console_app_bank
 			int indexAccount = int.Parse(Console.ReadLine());
 			Console.Write("Enter the amount you wish to withdraw: ");
 			double amount = double.Parse(Console.ReadLine());
-            listAccounts[indexAccount].Withdraw(amount);
+			listAccounts[indexAccount].Withdraw(amount);
 		}
 		private static void Deposit()
 		{
