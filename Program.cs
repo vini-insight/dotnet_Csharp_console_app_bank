@@ -3,8 +3,6 @@ using Enums;
 using Models;
 using System.Collections.Generic;
 using System.Threading;
-using System.Linq;
-
 namespace dotnet_Csharp_console_app_bank
 {
 	class Program
@@ -32,10 +30,10 @@ namespace dotnet_Csharp_console_app_bank
 					case "5":
 						Deposit();
 						break;
-                    case "D":
-                        DelAccount();
-                        break;
-                    case "C":
+					case "D":
+						DelAccount();
+						break;
+					case "C":
 						Console.Clear();
 						break;
 					case "X":
@@ -61,25 +59,24 @@ namespace dotnet_Csharp_console_app_bank
 				Console.Clear();
 			}
 		}
-
-        private static void DelAccount()
-        {
-            Console.Write("Enter Customer Name to Delete: ");
-			string inputName = Console.ReadLine();	
-			bool foundAccount = false;		
-            foreach (Account account in listAccounts)
-            {
-                if(account.Name.Equals(inputName))
+		private static void DelAccount()
+		{
+			Console.Write("Enter Customer Name to Delete: ");
+			string inputName = Console.ReadLine();
+			bool foundAccount = false;
+			foreach (Account account in listAccounts)
+			{
+				if(account.Name.Equals(inputName))
 				{
 					foundAccount = true;
-                    if(account.Fund > 0)
-					{						
+					if(account.Fund > 0)
+					{
 						Console.WriteLine("you cannot delete your account. your account has a positive FUNDS. withdraw all money or make a transfer to another account".ToUpper());
 						break;
 					}
 					else
 					{
-						listAccounts.Remove(account);					
+						listAccounts.Remove(account);
 						Console.WriteLine("the account has been deleted".ToUpper());
 						break;
 					}
@@ -87,8 +84,7 @@ namespace dotnet_Csharp_console_app_bank
 			}
 			if(!foundAccount)
 				Console.WriteLine("the account does not exist".ToUpper());
-        }
-
+		}
 		private static void Withdraw()
 		{
 			Console.Write("Enter the account number: ");
@@ -97,27 +93,24 @@ namespace dotnet_Csharp_console_app_bank
 			double amount = double.Parse(Console.ReadLine());
             listAccounts[indexAccount].Withdraw(amount);
 		}
-
 		private static void Deposit()
 		{
 			Console.Write("Enter the account number: ");
 			int indexAccount = int.Parse(Console.ReadLine());
 			Console.Write("Enter the amount you wish to deposit: ");
 			double amount = double.Parse(Console.ReadLine());
-            listAccounts[indexAccount].Deposit(amount);
+			listAccounts[indexAccount].Deposit(amount);
 		}
-
 		private static void Transfer()
 		{
 			Console.Write("Enter the Origin account number: ");
 			int indexAccountOrigin = int.Parse(Console.ReadLine());
-            Console.Write("Enter the Target account number: ");
+			Console.Write("Enter the Target account number: ");
 			int indexAccountTarget = int.Parse(Console.ReadLine());
 			Console.Write("Enter the amount you wish to withdraw: ");
 			double amount = double.Parse(Console.ReadLine());
-            listAccounts[indexAccountOrigin].Transfer(amount, listAccounts[indexAccountTarget]);
+			listAccounts[indexAccountOrigin].Transfer(amount, listAccounts[indexAccountTarget]);
 		}
-
 		private static void AddAccount()
 		{
 			Console.WriteLine("Add new Account");
@@ -132,7 +125,6 @@ namespace dotnet_Csharp_console_app_bank
 			Account newAccount = new Account(AccountType: (AccountType) inputAccountType, fund: inputFund, credit: inputCredit, name: inputName);
 			listAccounts.Add(newAccount);
 		}
-
 		private static void ListAccounts()
 		{
 			Console.WriteLine("Accounts List");
@@ -148,7 +140,6 @@ namespace dotnet_Csharp_console_app_bank
 				Console.WriteLine(account);
 			}
 		}
-
 		private static string GetUserChoice()
 		{
 			Console.WriteLine();
@@ -161,7 +152,7 @@ namespace dotnet_Csharp_console_app_bank
 			Console.WriteLine("4 - Withdraw");
 			Console.WriteLine("5 - Deposit");
 			Console.WriteLine("D - Delete Account");
-            Console.WriteLine("C - Clear Screen");
+			Console.WriteLine("C - Clear Screen");
 			Console.WriteLine("X - Get out!");
 			Console.WriteLine();
 			string userChoice = Console.ReadLine().ToUpper();

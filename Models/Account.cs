@@ -1,6 +1,5 @@
 using System;
 using Enums;
-
 namespace Models
 {
 	public class Account
