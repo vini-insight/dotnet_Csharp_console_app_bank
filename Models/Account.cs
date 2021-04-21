@@ -16,33 +16,29 @@ namespace Models
 			this.Credit = credit;
 			this.Name = name;
 		}
-
 		public bool Withdraw(double amount)
 		{
-            if(this.Fund - amount < (this.Credit *-1))
+			if(this.Fund - amount < (this.Credit *-1))
 			{
-                Console.WriteLine("Insufficient Funds!");
+				Console.WriteLine("Insufficient Funds!");
                 return false;
-            }
-            this.Fund -= amount;
-            Console.WriteLine("The current fund of the {0} account is {1}", this.Name, this.Fund);
-            // https://docs.microsoft.com/pt-br/dotnet/standard/base-types/composite-formatting
-            return true;
+			}
+			this.Fund -= amount;
+			Console.WriteLine("The current fund of the {0} account is {1}", this.Name, this.Fund);
+			// https://docs.microsoft.com/pt-br/dotnet/standard/base-types/composite-formatting
+			return true;
 		}
-
 		public void Deposit(double amount)
 		{
 			this.Fund += amount;
-            Console.WriteLine("The current fund of the {0} account is {1}", this.Name, this.Fund);
+			Console.WriteLine("The current fund of the {0} account is {1}", this.Name, this.Fund);
 		}
-
 		public void Transfer(double amount, Account targetAccount)
 		{
 			if(this.Withdraw(amount))
 				targetAccount.Deposit(amount);
 		}
-
-        public override string ToString()
+		public override string ToString()
 		{
 			return "AccountType " + this.AccountType + " | " + "Name " + this.Name + " | " + "Funds " + this.Fund + " | " + "Credits " + this.Credit;
 		}
